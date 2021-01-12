@@ -18,4 +18,7 @@ sudo apt-get install -y python-numpy python-scipy python-matplotlib ipython ipyt
 sudo apt-get install -y ros-$ROS_VER-map-server
 sudo apt-get install -y ros-$ROS_VER-diff-drive-controller
 sudo apt-get install -y ros-$ROS_VER-ros-control
+sudo apt-get install -y ros-$ROS_VER-ros-controllers
+sudo apt-get install -y ros-$ROS_VER-gazebo-ros-control
+
 
