@@ -16,4 +16,5 @@ sudo apt-get install -y ros-$ROS_VER-rosserial-arduino
 sudo apt-get install -y ros-$ROS_VER-rosserial
 sudo apt-get install -y python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 sudo apt-get install -y ros-$ROS_VER-map-server
+sudo apt-get install -y ros-$ROS_VER-diff-drive-controller
 
