@@ -20,5 +20,5 @@ sudo apt-get install -y ros-$ROS_VER-diff-drive-controller
 sudo apt-get install -y ros-$ROS_VER-ros-control
 sudo apt-get install -y ros-$ROS_VER-ros-controllers
 sudo apt-get install -y ros-$ROS_VER-gazebo-ros-control
-
+sudo apt-get install -y ros-$ROS_VER-uvc-camera 
 
