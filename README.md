@@ -6,9 +6,9 @@ Setup
 git clone https://github.com/hrjp/rosenv
 cd rosenv
 ```
-ROS Kinetic install
+ROS melodic install
 ```bash
-./kinetic_install.bash
+./melodic_install.bash
 ```
 Package install
 ```bash
