@@ -14,7 +14,6 @@ sudo apt-get install -y ros-$ROS_VER-urg-node
 sudo apt-get install -y ros-$ROS_VER-turtlesim
 sudo apt-get install -y ros-$ROS_VER-rosserial-arduino
 sudo apt-get install -y ros-$ROS_VER-rosserial
-sudo apt-get install -y python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 sudo apt-get install -y ros-$ROS_VER-map-server
 sudo apt-get install -y ros-$ROS_VER-diff-drive-controller
 sudo apt-get install -y ros-$ROS_VER-ros-control
@@ -22,4 +21,10 @@ sudo apt-get install -y ros-$ROS_VER-ros-controllers
 sudo apt-get install -y ros-$ROS_VER-gazebo-ros-control
 sudo apt-get install -y ros-$ROS_VER-uvc-camera 
 sudo apt-get install -y ros-$ROS_VER-joint-state-publisher-gui
-
+sudo apt-get install -y python-numpy
+sudo apt-get install -y python-scipy
+sudo apt-get install -y python-matplotlib
+sudo apt-get install -y ipython ipython-notebook
+sudo apt-get install -y python-pandas
+sudo apt-get install -y python-sympy
+sudo apt-get install -y python-nose
