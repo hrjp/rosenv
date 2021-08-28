@@ -1,5 +1,6 @@
 #!/bin/bash
 export ROS_VER=melodic
+sudo apt update
 sudo apt-get install -y ros-$ROS_VER-velodyne
 sudo apt-get install -y ros-$ROS_VER-joy
 sudo apt-get install -y ros-$ROS_VER-joystick-drivers
