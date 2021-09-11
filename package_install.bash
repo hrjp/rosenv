@@ -22,6 +22,9 @@ sudo apt-get install -y ros-$ROS_VER-ros-controllers
 sudo apt-get install -y ros-$ROS_VER-gazebo-ros-control
 sudo apt-get install -y ros-$ROS_VER-uvc-camera 
 sudo apt-get install -y ros-$ROS_VER-joint-state-publisher-gui
+sudo apt-get install -y ros-$ROS_VER-pointcloud-to-laserscan
+sudo apt-get install -y ros-$ROS_VER-rosbridge-server
+
 sudo apt-get install -y python-numpy
 sudo apt-get install -y python-scipy
 sudo apt-get install -y python-matplotlib
