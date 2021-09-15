@@ -24,6 +24,8 @@ sudo apt-get install -y ros-$ROS_VER-uvc-camera
 sudo apt-get install -y ros-$ROS_VER-joint-state-publisher-gui
 sudo apt-get install -y ros-$ROS_VER-pointcloud-to-laserscan
 sudo apt-get install -y ros-$ROS_VER-rosbridge-server
+sudo apt-get install -y ros-$ROS_VER-ublox
+
 
 sudo apt-get install -y python-numpy
 sudo apt-get install -y python-scipy
