@@ -1,5 +1,6 @@
 #!/bin/bash
-
+sudo apt update
+sudo apt-get install -y git curl wget
 mkdir gtsam
 cd gtsam
 wget -O gtsam.zip https://github.com/borglab/gtsam/archive/4.0.0-alpha2.zip
