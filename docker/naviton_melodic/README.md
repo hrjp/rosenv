@@ -14,5 +14,5 @@ This is for building a naviton:melodic enviroment.
 2. ## Run a Docker container based on image
     To run a docker container based on my/image:
     ```bash:bash
-        docker run -it --name ROS_Melodic -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 user/naviton:melodic /bin/bash 
+        docker run -it --name naviton_melodic -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 user/naviton:melodic /bin/bash 
     ```

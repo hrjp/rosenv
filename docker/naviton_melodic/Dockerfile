@@ -44,11 +44,11 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/* && \
     echo "succesfully"
 
-RUN apt update && \
-    apt-get install -y git curl wget snapd &&\
-    git clone https://github.com/hrjp/rosenv &&\
-    ./rosenv/package_install.bash &&\
-    ./rosenv/gtsam_install.bash
+#RUN apt update && \
+#    apt-get install -y git curl wget snapd &&\
+#    git clone https://github.com/hrjp/rosenv &&\
+#    ./rosenv/package_install.bash &&\
+#    ./rosenv/gtsam_install.bash
     
 
 WORKDIR /home/catkin_ws
