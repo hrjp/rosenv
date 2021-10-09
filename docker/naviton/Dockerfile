@@ -45,7 +45,7 @@ RUN apt update && \
     echo "succesfully"
 
 RUN apt update && \
-    apt-get install -y git &&\
+    apt-get install -y git curl wget &&\
     git clone https://github.com/hrjp/rosenv &&\
     ./rosenv/package_install.bash &&\
     ./rosenv/gtsam_install.bash
