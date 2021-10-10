@@ -16,3 +16,9 @@ This is for building a naviton:melodic enviroment.
     ```bash:bash
         docker run -it --name naviton_melodic -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 user/naviton:melodic /bin/bash 
     ```
+
+3. ## Install naviton ros packages 
+    初めてコンテナ内部に入ったときに以下のスクリプトを実行してnaviton関連パッケージをインストールする
+    ```bash:bash
+        cd .. && git clone https://github.com/hrjp/rosenv && ./rosenv/naviton_package.bash
+    ```
