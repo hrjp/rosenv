@@ -8,7 +8,7 @@ This is for building a ros:melodic_gpu enviroment.
     ```
     build image:
     ```bash:bash
-    docker build -t user/ros:melodic rosenv/docker/ros_melodic_gpu
+    docker build -t user/ros:melodic_gpu rosenv/docker/ros_melodic_gpu
     ```
 
 2. ## Run a Docker container based on image
