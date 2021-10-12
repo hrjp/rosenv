@@ -1,15 +1,17 @@
 #!/bin/bash
 
 if [ $# -ne 2 ]; then
-  echo "指定された引数は$#個です。" 1>&2
-  echo "実行するには3個の引数が必要です。" 1>&2
+  echo "指定された引数は2個です。" 1>&2
+  echo "コンテナの名前　コンテナ内部と共有するフォルダのパス　の順に指定してください" 1>&2
   exit 1
 fi
 
-CONTAINAR_NAME=$1
+CONTAINER_NAME=$1
 SHARE_FOLDER_PATH=$2
 
-docker run -it --name $CONTAINAR_NAME \
+sudo echo"docker container making ..."
+
+docker run -it --name $CONTAINER_NAME \
             -v /dev:/dev \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             -v $SHARE_FOLDER_PATH:/home/share \
@@ -20,3 +22,7 @@ docker run -it --name $CONTAINAR_NAME \
             --privileged \
             hrjp/naviton:melodic_gpu /bin/bash
 
+cd
+touch $CONTAINER_NAME.bash
+sudo chmod 777 $CONTAINER_NAME.bash
+echo -e "docker start $CONTAINER_NAME \n docker exec -it $CONTAINER_NAME /bin/bash" >>$CONTAINER_NAME.bash

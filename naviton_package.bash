@@ -9,3 +9,4 @@ git clone https://github.com/hrjp/LeGO-LOAM
 git clone -b melodic https://github.com/iralabdisco/ira_laser_tools
 cd ..
 catkin build
+source devel/setup.bash
