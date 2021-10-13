@@ -9,7 +9,11 @@ fi
 CONTAINER_NAME=$1
 SHARE_FOLDER_PATH=$2
 
-sudo echo""
+cd
+touch $CONTAINER_NAME.bash
+sudo chmod 777 $CONTAINER_NAME.bash
+echo -e "xhost + \n docker start $CONTAINER_NAME \n docker exec -it $CONTAINER_NAME /bin/bash" >>$CONTAINER_NAME.bash
+
 
 docker run -it --name $CONTAINER_NAME \
             -v /dev:/dev \
@@ -21,7 +25,3 @@ docker run -it --name $CONTAINER_NAME \
             --privileged \
             hrjp/naviton:melodic_gpu /bin/bash
 
-cd
-touch $CONTAINER_NAME.bash
-sudo chmod 777 $CONTAINER_NAME.bash
-echo -e "xhost + \n docker start $CONTAINER_NAME \n docker exec -it $CONTAINER_NAME /bin/bash" >>$CONTAINER_NAME.bash
