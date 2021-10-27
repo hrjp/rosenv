@@ -10,3 +10,7 @@ git clone -b noetic https://github.com/iralabdisco/ira_laser_tools
 cd ..
 catkin build
 source devel/setup.bash
+
+echo Welcome to Naviton Platform 
+echo Lets type this command
+echo roslaunch kcctcore demo.launch
