@@ -1,13 +1,26 @@
 #!/bin/bash
+CONTAINER_NAME=$1
+SHARE_FOLDER_PATH=$2
+SHARE_FOLDER_CMD=""
 
+if [ $# -ne 1 ]; then
+  echo "指定された引数は2個です。" 1>&2
+  echo "コンテナの名前　コンテナ内部と共有するフォルダのパス　の順に指定してください" 1>&2
+  #0
+
+else
 if [ $# -ne 2 ]; then
   echo "指定された引数は2個です。" 1>&2
   echo "コンテナの名前　コンテナ内部と共有するフォルダのパス　の順に指定してください" 1>&2
-  exit 1
+  #1
+
+else
+#2
+fi
 fi
 
-CONTAINER_NAME=$1
-SHARE_FOLDER_PATH=$2
+
+
 
 cd
 touch $CONTAINER_NAME.bash

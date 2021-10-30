@@ -7,4 +7,4 @@ sudo apt-get update
 sudo apt-get install -y simplescreenrecorder
 sudo apt install -y curl
 sudo apt-get install -y terminator
-sudo apt install net-tools
+sudo apt install -y net-tools iputils-ping
