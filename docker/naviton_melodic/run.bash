@@ -4,7 +4,7 @@ CONTAINER_NAME=naviton_melodic
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
 GPU_CMD=""
-REMOVE_CMD=""
+
 
 usage_exit() {
         echo " " 1>&2
@@ -19,17 +19,21 @@ usage_exit() {
         exit 1
 }
 
-while getopts grnsh OPT
+while getopts grn:s:h OPT
 do
     case $OPT in
         g )  GPU_CMD="--gpus all"
+            echo " Using nvidia GPUs" 1>&2
             ;;
         r )  REMOVE_CMD="--rm"
+            echo " Remove when exit this container" 1>&2
             ;;
-        n )  CONTAINER_NAME=$OPTARG
+        n)  CONTAINER_NAME=$OPTARG
+            echo " CONTAINER_NAME = $OPTARG " 1>&2
             ;;
         s )  SHARE_FOLDER_PATH=$OPTARG
             SHARE_FOLDER_CMD="-v $SHARE_FOLDER_PATH:/home/share"
+            echo " SHARE_FOLDER_PATH = $SHARE_FOLDER_PATH " 1>&2
             ;;
         h ) usage_exit
             ;;
@@ -38,10 +42,16 @@ do
     esac
 done
 
-cd
-touch $CONTAINER_NAME.bash
-sudo chmod 777 $CONTAINER_NAME.bash
-echo -e "xhost + \n docker start $CONTAINER_NAME \n docker exec -it $CONTAINER_NAME /bin/bash" >>$CONTAINER_NAME.bash
+
+
+if [ -z $REMOVE_CMD ]; then
+    cd
+    if [ ! -f $CONTAINER_NAME.bash ]; then
+        touch $CONTAINER_NAME.bash
+        sudo chmod 777 $CONTAINER_NAME.bash
+        echo -e "xhost + \n docker start $CONTAINER_NAME \n docker exec -it $CONTAINER_NAME /bin/bash" >>$CONTAINER_NAME.bash
+    fi
+fi
 
 
 docker run -it --name $CONTAINER_NAME \
