@@ -11,9 +11,9 @@
 
 
 
-FROM ubuntu:18.04
+#FROM ubuntu:18.04
 
-#FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
+FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
 
 
 ENV ROS_DISTRO=melodic

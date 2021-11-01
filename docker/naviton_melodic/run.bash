@@ -1,13 +1,42 @@
 #!/bin/bash
 
-if [ $# -ne 2 ]; then
-  echo "指定された引数は2個です。" 1>&2
-  echo "コンテナの名前　コンテナ内部と共有するフォルダのパス　の順に指定してください" 1>&2
-  exit 1
-fi
+CONTAINER_NAME=naviton_melodic
+SHARE_FOLDER_PATH=""
+SHARE_FOLDER_CMD=""
+GPU_CMD=""
+REMOVE_CMD=""
 
-CONTAINER_NAME=$1
-SHARE_FOLDER_PATH=$2
+usage_exit() {
+        echo " " 1>&2
+        echo " -----------------------------------------------------------------------------" 1>&2
+        echo " OPTIONS              | DETAILS " 1>&2
+        echo " -----------------------------------------------------------------------------" 1>&2
+        echo " -g                   | GPU enabled" 1>&2
+        echo " -r                   | remove when exit the container" 1>&2
+        echo " -n CONTAINER_NAME    | container name (default : naviton_melodic)" 1>&2
+        echo " -s SHARE_FOLDER_PATH | directory path shared with the inside of the container" 1>&2
+        echo " -----------------------------------------------------------------------------" 1>&2
+        exit 1
+}
+
+while getopts grnsh OPT
+do
+    case $OPT in
+        g )  GPU_CMD="--gpus all"
+            ;;
+        r )  REMOVE_CMD="--rm"
+            ;;
+        n )  CONTAINER_NAME=$OPTARG
+            ;;
+        s )  SHARE_FOLDER_PATH=$OPTARG
+            SHARE_FOLDER_CMD="-v $SHARE_FOLDER_PATH:/home/share"
+            ;;
+        h ) usage_exit
+            ;;
+        \? ) usage_exit
+            ;;
+    esac
+done
 
 cd
 touch $CONTAINER_NAME.bash
@@ -18,9 +47,11 @@ echo -e "xhost + \n docker start $CONTAINER_NAME \n docker exec -it $CONTAINER_N
 docker run -it --name $CONTAINER_NAME \
             -v /dev:/dev \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
-            -v $SHARE_FOLDER_PATH:/home/share \
+            $SHARE_FOLDER_CMD \
             -e DISPLAY=$DISPLAY \
             -e QT_X11_NO_MITSHM=1 \
+            $GPU_CMD \
+            $REMOVE_CMD \
             --net=host \
             --privileged \
             hrjp/naviton:melodic_gpu /bin/bash

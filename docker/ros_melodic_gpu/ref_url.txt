@@ -1,1 +1,0 @@
-https://gbiggs.github.io/ros_moveit_rsj_tutorial/ros_useful_stuff.html
