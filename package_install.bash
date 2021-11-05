@@ -1,7 +1,7 @@
 #!/bin/bash
 export ROS_VER=melodic
 sudo apt update
-sudo apt-get install -y ros-$ROS_VER-velodyne
+sudo apt-get install -y ros-$ROS_VER-velodyne-*
 sudo apt-get install -y ros-$ROS_VER-joy
 sudo apt-get install -y ros-$ROS_VER-joystick-drivers
 sudo apt-get install -y ros-$ROS_VER-jsk-visualization
@@ -25,6 +25,8 @@ sudo apt-get install -y ros-$ROS_VER-joint-state-publisher-gui
 sudo apt-get install -y ros-$ROS_VER-pointcloud-to-laserscan
 sudo apt-get install -y ros-$ROS_VER-rosbridge-server
 sudo apt-get install -y ros-$ROS_VER-ublox
+sudo apt-get install -y ros-$ROS_VER-navigation
+sudo apt-get install -y ros-$ROS_VER-range-sensor-layer
 
 
 sudo apt-get install -y python-numpy

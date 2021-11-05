@@ -1,1 +1,0 @@
-FROM hrjp/ros:melodic_gpu
