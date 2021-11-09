@@ -13,8 +13,9 @@
 
 #FROM ubuntu:18.04
 
-FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
+#FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
 
+FROM nvidia/cudagl:11.4.0-devel-ubuntu18.04
 
 ENV ROS_DISTRO=melodic
 ENV DEBIAN_FRONTEND=noninteractive
@@ -45,11 +46,13 @@ RUN apt update && \
     echo "succesfully"
 
 RUN apt update && \
-    apt-get install -y git curl wget snapd nautilus
+    apt-get install -y git curl wget nautilus
 RUN git clone https://github.com/hrjp/rosenv
-RUN ./rosenv/package_install.bash
-RUN ./rosenv/gtsam_install.bash
-RUN rm -rf /home/rosenv
+RUN ./rosenv/package_install.bash && \
+    ./rosenv/gazebo_update.bash && \
+    ./rosenv/gtsam_install.bash 
+RUN rm -rf /home/rosenv && \
+    echo "source export DISPLAY=:0" >> /root/.bashrc
     
 
 WORKDIR /home/catkin_ws
