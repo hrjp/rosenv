@@ -64,5 +64,5 @@ docker run -it --name $CONTAINER_NAME \
             $REMOVE_CMD \
             --net=host \
             --privileged \
-            hrjp/naviton:melodic_gpu /bin/bash
+            hrjp/naviton:melodic_cudagl /bin/bash
 

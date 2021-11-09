@@ -39,4 +39,4 @@ source devel/setup.bash
 
 echo Welcome to Naviton Platform 
 echo Lets type this command
-echo roslaunch kcctcore demo.launch
+echo roslaunch kcctcore demo2d.launch
