@@ -25,7 +25,6 @@ else
     cd /home/$USER/ros1_ws/src
 fi
 
-cd catkin_ws/src
 git clone https://github.com/hrjp/kcctcore
 git clone https://github.com/hrjp/kcctnavigation
 git clone https://github.com/hrjp/waypoint_tools
