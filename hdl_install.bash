@@ -31,5 +31,5 @@ git clone https://github.com/koide3/hdl_localization
 git clone https://github.com/koide3/hdl_global_localization
 
 cd ..
-catkin build -DCMAKE_BUILD_TYPE=Release -DBUILD_VGICP_CUDA=ON
+catkin build -DBUILD_VGICP_CUDA=ON
 source devel/setup.bash
