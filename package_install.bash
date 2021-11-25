@@ -27,6 +27,8 @@ sudo apt-get install -y ros-$ROS_VER-rosbridge-server
 sudo apt-get install -y ros-$ROS_VER-ublox
 sudo apt-get install -y ros-$ROS_VER-navigation
 sudo apt-get install -y ros-$ROS_VER-range-sensor-layer
+sudo apt-get install -y ros-$ROS_VER-nmea-navsat-driver
+sudo apt-get install -y ros-$ROS_VER-imu-filter-madgwick
 
 
 sudo apt-get install -y python-numpy
