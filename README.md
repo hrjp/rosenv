@@ -1,3 +1,7 @@
+![license](https://img.shields.io/github/license/hrjp/rosenv)
+![size](https://img.shields.io/github/repo-size/hrjp/rosenv)
+![commit](https://img.shields.io/github/last-commit/hrjp/rosenv/main)
+
 # rosenv
 ROS environment construction 
 ---
