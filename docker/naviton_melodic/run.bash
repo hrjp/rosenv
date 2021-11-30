@@ -57,6 +57,7 @@ fi
 docker run -it --name $CONTAINER_NAME \
             -v /dev:/dev \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
+            -v $HOME/.Xauthority:/root/.Xauthority:rw \
             $SHARE_FOLDER_CMD \
             -e DISPLAY=$DISPLAY \
             -e QT_X11_NO_MITSHM=1 \
