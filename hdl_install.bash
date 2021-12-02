@@ -29,6 +29,7 @@ git clone https://github.com/koide3/ndt_omp
 git clone https://github.com/SMRT-AIST/fast_gicp --recursive
 git clone https://github.com/koide3/hdl_localization
 git clone https://github.com/koide3/hdl_global_localization
+git clone https://github.com/koide3/hdl_people_tracking
 
 cd ..
 catkin build -DBUILD_VGICP_CUDA=ON
