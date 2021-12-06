@@ -1,3 +1,4 @@
+![naviton workflow](https://github.com/hrjp/rosenv/actions/workflows/image-build.yml/badge.svg)
 ![license](https://img.shields.io/github/license/hrjp/rosenv)
 ![size](https://img.shields.io/github/repo-size/hrjp/rosenv)
 ![commit](https://img.shields.io/github/last-commit/hrjp/rosenv/main)
