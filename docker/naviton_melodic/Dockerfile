@@ -47,7 +47,7 @@ RUN apt update && \
 
 RUN apt update && \
     apt-get install -y git curl wget nautilus && \
-    apt install nvidia-cuda-toolkit
+    apt install -y nvidia-cuda-toolkit
 RUN git clone https://github.com/hrjp/rosenv
 RUN ./rosenv/package_install.bash && \
     ./rosenv/gazebo_update.bash && \
