@@ -1,4 +1,4 @@
-name: Docker image build and push
+name: ROS melodic image build 
 on:
   workflow_dispatch:
   push:
@@ -22,7 +22,7 @@ jobs:
       - name: Build and Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./docker/naviton_melodic
+          context: ./docker/ros_melodic
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/naviton:melodic_develop
+            ${{ secrets.DOCKER_USERNAME }}/ros:melodic_develop

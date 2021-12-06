@@ -13,8 +13,8 @@
 
 #FROM ubuntu:18.04
 
-FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
-
+#FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
+FROM nvidia/cudagl:11.4.0-devel-ubuntu18.04
 
 ENV ROS_DISTRO=melodic
 ENV DEBIAN_FRONTEND=noninteractive
