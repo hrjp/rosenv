@@ -1,5 +1,5 @@
-![naviton workflow](https://github.com/hrjp/rosenv/actions/workflows/naviton-image-build.yml/badge.svg)
-![ros workflow](https://github.com/hrjp/rosenv/actions/workflows/ros-image-build.yml/badge.svg)
+[![naviton workflow](https://github.com/hrjp/rosenv/actions/workflows/naviton-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/naviton)
+[![ros workflow](https://github.com/hrjp/rosenv/actions/workflows/ros-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros)
 ![license](https://img.shields.io/github/license/hrjp/rosenv)
 ![size](https://img.shields.io/github/repo-size/hrjp/rosenv)
 ![commit](https://img.shields.io/github/last-commit/hrjp/rosenv/main)
