@@ -53,6 +53,7 @@ if [ -z $REMOVE_CMD ]; then
     fi
 fi
 
+xhost +
 
 docker run -it --name $CONTAINER_NAME \
             -v /dev:/dev \
