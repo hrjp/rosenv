@@ -53,7 +53,7 @@ RUN ./rosenv/package_install.bash && \
     ./rosenv/gazebo_update.bash && \
     ./rosenv/gtsam_install.bash 
 RUN rm -rf /home/rosenv && \
-    echo "source export DISPLAY=:0" >> /root/.bashrc
+    echo "export DISPLAY=:0" >> /root/.bashrc
     
 
 WORKDIR /home/catkin_ws
