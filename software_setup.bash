@@ -8,3 +8,5 @@ sudo apt-get install -y simplescreenrecorder
 sudo apt install -y curl
 sudo apt-get install -y terminator
 sudo apt install -y net-tools iputils-ping
+sudo apt install -y gnome-shell-extension-system-monitor
+sudo apt install -y gnome-shell-extension-prefs
