@@ -1,18 +1,7 @@
-#######################################################################################################################################################################################
-###  Install ROS1(melodic) on ubuntu18.04 ###
-#
-## build
-# $ docker build -t my/ros-gpu:melodic .
-#
-## run
-# $ docker run -it --name ROS_Melodic_GPU  -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 --gpus all my/ros-gpu:melodic /bin/bash
-#
-#######################################################################################################################################################################################
-
+# ROS Melodic enviroment
 
 
 #FROM ubuntu:18.04
-
 #FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
 FROM nvidia/cudagl:11.4.0-devel-ubuntu18.04
 
@@ -23,7 +12,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN touch /etc/apt/apt.conf.d/99fixbadproxy && \
     echo "Acquire::http::Pipeline-Depth 0; Acquire::http::No-Cache true; Acquire::BrokenProxy true;" >> /etc/apt/apt.conf.d/99fixbadproxy && \
     apt update && \
-    apt install -y git tmux vim liburdfdom-tools lsb-release curl gnupg2
+    apt install -y git tmux vim liburdfdom-tools lsb-release curl wget gnupg2 bash-completion nautilus nvidia-cuda-toolkit && \
+    echo "source /etc/bash_completion" >> /root/.bashrc
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
     apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
@@ -44,31 +34,4 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/* && \
     echo "succesfully"
 
-#RUN apt update && \
-#    apt-get install -y git curl wget snapd &&\
-#    git clone https://github.com/hrjp/rosenv &&\
-#    ./rosenv/package_install.bash &&\
-#    ./rosenv/gtsam_install.bash
-    
-
 WORKDIR /home/catkin_ws
-
-
-
-### apt install package detail ###
-# liburdfdom-tools //command{$ check_urdf [file_path]}:simple check for urdf_file
-
-### apt available ros-package detail ###
-# ros-melodic-joint-state-publisher-gui //for move arm(joint) on rviz 
-# ros-melodic-turtlesim ros-melodic-effort-controllers ros-melodic-joint-trajectory-controller ros-melodic-joint-state-publisher-gui
-
-### Before execute commands, following execute two comands###
-## ROS1
-#source /opt/ros/$ROS_DISTRO/setup.bash
-#source ~/ros1_ws/devel/setup.bash
-
-#RUN rm -rf /var/lib/apt/lists/*
-
-
-## docker build option: --build-arg ros1_ver=noetic and --build-arg ubuntu_ver=20.04
-# $ docker build -t my/ros-gpu:noetic --build-arg ros1_ver=noetic --build-arg ubuntu_ver=20.04 .

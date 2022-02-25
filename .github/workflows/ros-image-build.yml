@@ -25,4 +25,4 @@ jobs:
           context: ./docker/ros_melodic
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/ros:melodic_develop
+            ${{ secrets.DOCKER_USERNAME }}/ros:melodic_cudagl
