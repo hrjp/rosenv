@@ -1,6 +1,8 @@
 name: ROS2 foxy image build 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '55 13 * * *'
   push:
     branches:
       - main

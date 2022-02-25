@@ -1,6 +1,8 @@
 name: Naviton image build 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '55 15 * * *'
   push:
     branches:
       - main
