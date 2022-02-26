@@ -1,7 +1,7 @@
 #!/bin/bash
 
-IMAGE_NAME=hrjp/naviton:melodic_cudagl
-CONTAINER_NAME=naviton_melodic
+IMAGE_NAME=hrjp/ros2:foxy_develop
+CONTAINER_NAME=ros2_foxy
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
 GPU_CMD=""

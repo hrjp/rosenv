@@ -1,5 +1,6 @@
 #!/bin/bash
 
+IMAGE_NAME=yolov5:naviton_ros2
 CONTAINER_NAME=yolov5_naviton
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
@@ -70,5 +71,5 @@ docker run -it --name $CONTAINER_NAME \
             -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native \
             -v ${XDG_RUNTIME_DIR}/pulse/native/:${XDG_RUNTIME_DIR}/pulse/native \
             -v ${HOME}/.config/pulse/cookie:/root/.config/pulse/cookie \
-            yolov5:naviton_ros2 /bin/bash
+            $IMAGE_NAME /bin/bash
 

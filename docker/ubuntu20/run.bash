@@ -1,5 +1,6 @@
 #!/bin/bash
 
+IMAGE_NAME=nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
 CONTAINER_NAME=ubuntu20
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
@@ -66,5 +67,5 @@ docker run -it --name $CONTAINER_NAME \
             $REMOVE_CMD \
             --net=host \
             --privileged \
-            nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04 /bin/bash
+            $IMAGE_NAME /bin/bash
 
