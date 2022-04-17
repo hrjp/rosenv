@@ -22,7 +22,10 @@ RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main"
 RUN apt update && \
     apt install -y ros-$ROS_DISTRO-desktop-full ros-$ROS_DISTRO-rosserial ros-$ROS_DISTRO-rosserial-arduino python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential python3-catkin-tools && \
     echo "ros installed"
-RUN mkdir -p /home/catkin_ws/src && \
+RUN sudo -E rosdep init && \
+    rosdep fix-permissions &\
+    rosdep update && \
+    mkdir -p /home/catkin_ws/src && \
     cd /home/catkin_ws && \
     ls src && \
     /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; catkin build" && \
@@ -31,9 +34,8 @@ RUN mkdir -p /home/catkin_ws/src && \
     apt update && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
-    sudo -E rosdep init && \
-    rosdep fix-permissions &\
-    rosdep update && \
+    source /opt/ros/$ROS_DISTRO/setup.bash && \
+    source /home/catkin_ws/devel/setup.bash && \
     echo "succesfully"
 
 WORKDIR /home/catkin_ws
