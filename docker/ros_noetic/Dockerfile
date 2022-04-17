@@ -31,7 +31,7 @@ RUN mkdir -p /home/catkin_ws/src && \
     apt update && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
-    sudo rosdep init && \
+    sudo -E rosdep init && \
     rosdep fix-permissions &\
     rosdep update && \
     echo "succesfully"
