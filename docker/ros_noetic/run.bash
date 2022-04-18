@@ -1,6 +1,7 @@
 #!/bin/bash
 
-IMAGE_NAME=tamago117/ros:noetic_cudagl
+
+IMAGE_NAME=hrjp/ros:noetic_cudagl
 CONTAINER_NAME=ros_noetic
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
