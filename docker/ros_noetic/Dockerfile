@@ -20,8 +20,7 @@ RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main"
 
 RUN apt update && \
     apt install -y --no-install-recommends ros-$ROS_DISTRO-desktop-full ros-$ROS_DISTRO-rosserial ros-$ROS_DISTRO-rosserial-arduino python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential python3-catkin-tools python3-vcstools && \
-    rm -rf /var/lib/apt/lists/* &&\
-    echo "ros installed"
+    rm -rf /var/lib/apt/lists/*
 RUN rosdep init && \
     rosdep update --rosdistro $ROS_DISTRO && \
     mkdir -p /home/catkin_ws/src && \
