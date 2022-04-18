@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '55 15 * * *'
-  #push:
-  #  branches:
-  #    - main
+  push:
+    branches:
+      - main
 
 jobs:
   push_to_registry:
