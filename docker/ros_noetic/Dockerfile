@@ -18,6 +18,7 @@ RUN touch /etc/apt/apt.conf.d/99fixbadproxy && \
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
     apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
+
 RUN apt-get update && apt-get install --no-install-recommends -y \
     build-essential \
     python3-rosdep \
@@ -32,6 +33,7 @@ RUN rosdep init && \
     rosdep update --rosdistro $ROS_DISTRO
 
 RUN mkdir -p /home/catkin_ws/src && \
+
     cd /home/catkin_ws && \
     ls src && \
     /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; catkin build" && \

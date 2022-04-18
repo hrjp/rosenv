@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 IMAGE_NAME=hrjp/ros:noetic_cudagl
 CONTAINER_NAME=ros_noetic
 SHARE_FOLDER_PATH=""
