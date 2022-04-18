@@ -38,8 +38,6 @@ RUN mkdir -p /home/catkin_ws/src && \
     apt update && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
-    source /opt/ros/$ROS_DISTRO/setup.bash && \
-    source /home/catkin_ws/devel/setup.bash && \
     echo "succesfully"
 
 WORKDIR /home/catkin_ws
