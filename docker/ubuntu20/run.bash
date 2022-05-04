@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_NAME=nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
+IMAGE_NAME=hrjp/ubuntu:20.04
 CONTAINER_NAME=ubuntu20
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
