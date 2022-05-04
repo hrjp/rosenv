@@ -9,12 +9,15 @@ ENV ROS_DISTRO=melodic
 ENV DEBIAN_FRONTEND=noninteractive
 
 
-RUN apt update && apt install wget && \
-    apt-key del 7fa2af80 && \
+RUN \
+    # Update nvidia GPG key
     rm /etc/apt/sources.list.d/cuda.list && \
     rm /etc/apt/sources.list.d/nvidia-ml.list && \
-    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb && \
-    dpkg -i cuda-keyring_1.0-1_all.deb
+    apt-key del 7fa2af80 && \
+    apt-get update && apt-get install -y --no-install-recommends wget && \
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb && \
+    dpkg -i cuda-keyring_1.0-1_all.deb && \
+    apt-get update
 
 ### ROS1 Install ###
 RUN touch /etc/apt/apt.conf.d/99fixbadproxy && \
