@@ -9,7 +9,9 @@ ENV ROS_DISTRO=melodic
 ENV DEBIAN_FRONTEND=noninteractive
 
 ### ROS1 Install ###
-RUN touch /etc/apt/apt.conf.d/99fixbadproxy && \
+RUN apt-key del 7fa2af80 && \
+    apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/3bf863cc.pub && \
+    touch /etc/apt/apt.conf.d/99fixbadproxy && \
     echo "Acquire::http::Pipeline-Depth 0; Acquire::http::No-Cache true; Acquire::BrokenProxy true;" >> /etc/apt/apt.conf.d/99fixbadproxy && \ 
     apt update && \
     apt install -y git tmux vim liburdfdom-tools lsb-release curl wget gnupg2 bash-completion nautilus && \
