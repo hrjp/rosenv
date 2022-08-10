@@ -2,14 +2,6 @@
 
 CLONE_BRANCH="main"
 
-#LeGO-LOAM dependency
-wget -O /home/gtsam.zip https://github.com/borglab/gtsam/archive/4.1.1.zip
-unzip /home/gtsam.zip
-cd /home/gtsam-4.1.1/
-mkdir build && cd build
-cmake -j1 ..
-sudo make install
-
 if [ ! -d "/home/catkin_ws/src" ]; then
     echo
 else
