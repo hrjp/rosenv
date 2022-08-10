@@ -1,7 +1,7 @@
 #!/bin/bash
 
-IMAGE_NAME=hrjp/ubuntu:20.04
-CONTAINER_NAME=ubuntu20
+IMAGE_NAME=hrjp/ros2:galactic_develop
+CONTAINER_NAME=ros2_galactic
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
 GPU_CMD=""
@@ -65,7 +65,6 @@ docker run -it --name $CONTAINER_NAME \
             -e QT_X11_NO_MITSHM=1 \
             $GPU_CMD \
             $REMOVE_CMD \
-            --net=host \
             --privileged \
             $IMAGE_NAME /bin/bash
 
