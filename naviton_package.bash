@@ -38,8 +38,9 @@ git clone -b $CLONE_BRANCH https://github.com/hrjp/kcctnavigation
 git clone -b $CLONE_BRANCH https://github.com/hrjp/waypoint_tools
 git clone -b $CLONE_BRANCH https://github.com/hrjp/kcctsim
 git clone https://github.com/hrjp/kcctplugin
-git clone https://github.com/hrjp/LeGO-LOAM
 git clone https://github.com/hrjp/ira_laser_tools
+git clone https://github.com/hrjp/LeGO-LOAM
+
 cd ..
 catkin build
 source devel/setup.bash
