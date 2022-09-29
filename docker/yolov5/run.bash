@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_NAME=yolov5:naviton_ros2
+IMAGE_NAME=hrjp/yolov5:naviton
 CONTAINER_NAME=yolov5_naviton
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
