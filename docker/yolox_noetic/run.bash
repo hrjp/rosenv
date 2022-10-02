@@ -1,7 +1,7 @@
 #!/bin/bash
 
-IMAGE_NAME=hrjp/ros:melodic_cudagl
-CONTAINER_NAME=ros_melodic
+IMAGE_NAME=hrjp/yolox:noetic
+CONTAINER_NAME=yolox_noetic
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
 GPU_CMD=""
