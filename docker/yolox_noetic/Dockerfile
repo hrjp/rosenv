@@ -6,7 +6,7 @@ FROM hrjp/ros:noetic_cudagl
 ENV ROS_DISTRO=noetic
 
 RUN apt update && \
-    apt install -y python3-pip && \
+    apt install -y python3-pip v4l-utils && \
     pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
 
 RUN cd /home/catkin_ws/src &&\
