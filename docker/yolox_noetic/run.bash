@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_NAME=nvidia/cudagl:11.4.2-runtime-ubuntu20.04
+IMAGE_NAME=hrjp/yolox:noetic
 CONTAINER_NAME=yolox_noetic
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
