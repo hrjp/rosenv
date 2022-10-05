@@ -3,7 +3,7 @@
 
 #FROM ubuntu:20.04
 #FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
-FROM nvidia/cudagl:11.4.2-devel
+FROM nvidia/cudagl:11.4.2-runtime-ubuntu20.04
 
 ENV ROS_DISTRO=noetic
 ENV DEBIAN_FRONTEND=noninteractive
