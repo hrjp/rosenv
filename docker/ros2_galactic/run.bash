@@ -5,7 +5,7 @@ CONTAINER_NAME=ros2_galactic
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
 GPU_CMD=""
-CONTAINER_NAME_CMD=""
+CONTAINER_NAME_CMD="--name $CONTAINER_NAME"
 
 usage_exit() {
         echo " " 1>&2
