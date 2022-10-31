@@ -2,7 +2,7 @@ name: SLAM melodic image build
 on:
   workflow_dispatch:
   schedule:
-    - cron: '55 13 * * *'
+    - cron: '55 16 * * *'
   push:
     branches:
       - main
