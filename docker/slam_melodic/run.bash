@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_NAME=hrjp/slam:melodic
+IMAGE_NAME=hrjp/slam:melodic_cudagl
 CONTAINER_NAME=slam_melodic
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
