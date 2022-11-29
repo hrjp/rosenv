@@ -1,7 +1,7 @@
 #!/bin/bash
 
-IMAGE_NAME=hrjp/ros2:galactic_cudagl
-CONTAINER_NAME=ros2_galactic
+IMAGE_NAME=hrjp/ros2:humble_cuda
+CONTAINER_NAME=ros2_humble
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
 GPU_CMD=""
@@ -68,6 +68,7 @@ docker run -it  $CONTAINER_NAME_CMD\
             -e QT_X11_NO_MITSHM=1 \
             $GPU_CMD \
             $REMOVE_CMD \
+            --net=host \
             --privileged \
             $IMAGE_NAME /bin/bash
 

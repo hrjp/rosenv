@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_NAME=hrjp/ros2:galactic_develop
+IMAGE_NAME=hrjp/ros2:galactic_cudagl
 CONTAINER_NAME=ros2_galactic
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""

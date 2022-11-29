@@ -4,7 +4,8 @@
 [![ROS noetic image build](https://github.com/hrjp/rosenv/actions/workflows/ros-noetic-image-build.yml/badge.svg?branch=main)](https://hub.docker.com/repository/docker/hrjp/ros)   
 
 [![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-foxy-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)
-[![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-galactic-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)   
+[![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-galactic-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)
+[![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-humble-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)   
 
 [![Ubuntu20.04 image build](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-20-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ubuntu)   
 

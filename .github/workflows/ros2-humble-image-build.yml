@@ -1,4 +1,4 @@
-name: ROS2 galactic image build 
+name: ROS2 humble image build 
 on:
   workflow_dispatch:
   schedule:
@@ -24,7 +24,7 @@ jobs:
       - name: Build and Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./docker/ros2_galactic
+          context: ./docker/ros2_humble
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/ros2:galactic_cudagl
+            ${{ secrets.DOCKER_USERNAME }}/ros2:humble_cuda
