@@ -72,8 +72,8 @@ git clone https://github.com/hrjp/rosenv
 | :--- | :--- | :--- |
 | -g | | GPUを使用する |
 | -r | | コンテナからexitした際にコンテナを自動消去する | 
-| -n CONTAINER_NAME | naviton_melodic | コンテナの名前 |
-| -s SHARE_FOLDER_PATH | | コンテナ内部と共有するディレクトリのパス<br>rosbagをやデータを外部と共有する際に使用<br>(ex.　shareフォルダを作ってから　/home/user/share ) |
+| -n CONTAINER_NAME | | コンテナの名前 |
+| -s SHARE_FOLDER_PATH | | コンテナ内部と共有するディレクトリのパス<br>rosbagをやデータを外部と共有する際に使用<br>(ex.　shareフォルダを作ってから　/home/$USER/share ) |
 
 
 
