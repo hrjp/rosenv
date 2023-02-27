@@ -25,6 +25,15 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./docker/ros_noetic
+          build-args: BASE_IMAGE=hrjp/ubuntu20_cudagl:latest
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/ros:noetic_cudagl
+      - name: Build and Push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: ./docker/ros_noetic
+          build-args: BASE_IMAGE=ubuntu:20.04
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/ros:noetic
