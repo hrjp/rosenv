@@ -7,6 +7,7 @@
 [![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-galactic-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)
 [![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-humble-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)   
 
+[![Ubuntu18.04 image build](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-18-image-build.yml/badge.svg)](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-18-image-build.yml)
 [![Ubuntu20.04 image build](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-20-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ubuntu)   
 
 [![YOLOX noetic image build](https://github.com/hrjp/rosenv/actions/workflows/yolox-noetic-image-build.yml/badge.svg)](https://hub.docker.comUbuntu20.04/repository/docker/hrjp/yolox)   

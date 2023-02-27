@@ -1,6 +1,6 @@
 # ROS Melodic enviroment
 
-ARG BASE_IMAGE=nvidia/cudagl:11.4.0-devel-ubuntu18.04
+ARG BASE_IMAGE=hrjp/ubuntu:18_cudagl
 FROM $BASE_IMAGE
 
 ENV ROS_DISTRO=melodic
