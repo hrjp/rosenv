@@ -25,7 +25,7 @@ RUN touch /etc/apt/apt.conf.d/99fixbadproxy && \
 	export LANG=en_US.UTF-8
 #RUN locale  ## verify settingsRUN apt update
 
-RUN apt update && apt install -y curl gnupg2 lsb-release tmux vim git wget python3-pip python3-vcstools python3-vcstool liburdfdom-tools lsb-release bash-completion nautilus nvidia-cuda-toolkit && \
+RUN apt update && apt install -y curl gnupg2 lsb-release tmux vim git wget python3-pip liburdfdom-tools lsb-release bash-completion nautilus nvidia-cuda-toolkit && \
 	echo "source /etc/bash_completion" >> /root/.bashrc &&\
 	curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add - && \
 	sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list' && \
