@@ -1,4 +1,4 @@
-name: Ubuntu20.04 image build 
+name: Ubuntu18.04 image build 
 on:
   workflow_dispatch:
   schedule:
@@ -24,8 +24,8 @@ jobs:
       - name: Build and Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          context: ./docker/ubuntu20_cudagl
+          context: ./docker/ubuntu18_cudagl
           platforms: linux/amd64
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/ubuntu:20_cudagl
+            ${{ secrets.DOCKER_USERNAME }}/ubuntu:18_cudagl

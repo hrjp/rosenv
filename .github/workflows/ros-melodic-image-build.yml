@@ -25,6 +25,15 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./docker/ros_melodic
+          build-args: BASE_IMAGE=hrjp/ubuntu18_cudagl:latest
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/ros:melodic_cudagl
+      - name: Build and Push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: ./docker/ros_melodic
+          build-args: BASE_IMAGE=ubuntu:18.04
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/ros:melodic

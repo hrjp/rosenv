@@ -1,7 +1,7 @@
 #!/bin/bash
 
-IMAGE_NAME=hrjp/ubuntu:20_cudagl
-CONTAINER_NAME=ubuntu20_cudagl
+IMAGE_NAME=hrjp/ubuntu:18_cudagl
+CONTAINER_NAME=ubuntu18_cudagl
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
 GPU_CMD=""

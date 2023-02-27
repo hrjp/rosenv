@@ -1,28 +1,16 @@
 # ROS Melodic enviroment
 
-
-#FROM ubuntu:18.04
-#FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
-FROM nvidia/cudagl:11.4.0-devel-ubuntu18.04
+ARG BASE_IMAGE=nvidia/cudagl:11.4.0-devel-ubuntu18.04
+FROM $BASE_IMAGE
 
 ENV ROS_DISTRO=melodic
 ENV DEBIAN_FRONTEND=noninteractive
-
-
-RUN \
-    # Update nvidia GPG key
-    rm /etc/apt/sources.list.d/cuda.list && \
-    apt-key del 7fa2af80 && \
-    apt-get update && apt-get install -y --no-install-recommends wget && \
-    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb && \
-    dpkg -i cuda-keyring_1.0-1_all.deb && \
-    apt-get update
 
 ### ROS1 Install ###
 RUN touch /etc/apt/apt.conf.d/99fixbadproxy && \
     echo "Acquire::http::Pipeline-Depth 0; Acquire::http::No-Cache true; Acquire::BrokenProxy true;" >> /etc/apt/apt.conf.d/99fixbadproxy && \ 
     apt update && \
-    apt install -y git tmux vim liburdfdom-tools lsb-release curl wget gnupg2 bash-completion nautilus nvidia-cuda-toolkit  && \
+    apt install -y git tmux vim liburdfdom-tools lsb-release curl wget gnupg2 bash-completion nautilus && \
     echo "source /etc/bash_completion" >> /root/.bashrc
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
