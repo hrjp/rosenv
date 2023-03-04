@@ -29,7 +29,7 @@ RUN rosdep init && \
     echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /root/.bashrc && \
     echo "source /home/catkin_ws/devel/setup.bash" >> /root/.bashrc && \
     apt update && \
-    apt install python3-vcstool && \
+    apt install -y python3-vcstool && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
     echo "succesfully"
