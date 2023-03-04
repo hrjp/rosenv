@@ -18,6 +18,7 @@ RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main"
 
 RUN apt update && \
     apt install -y ros-$ROS_DISTRO-desktop-full ros-$ROS_DISTRO-rosserial ros-$ROS_DISTRO-rosserial-arduino python-rosdep python-catkin-tools && \
+    apt install python3-vcstool && \
     echo "ros installed" && \
     rosdep init && \
     rosdep update && \

@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-rosdep \
     python3-rosinstall \
     python3-vcstools \
+    apt install python3-vcstool && \
     ros-$ROS_DISTRO-desktop-full \
     ros-$ROS_DISTRO-rosserial ros-$ROS_DISTRO-rosserial-arduino \
     python3-rosinstall-generator python3-wstool build-essential python3-catkin-tools \
