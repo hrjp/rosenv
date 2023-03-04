@@ -22,7 +22,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-rosdep \
     python3-rosinstall \
     python3-vcstools \
-    apt install python3-vcstool && \
     ros-$ROS_DISTRO-desktop-full \
     ros-$ROS_DISTRO-rosserial ros-$ROS_DISTRO-rosserial-arduino \
     python3-rosinstall-generator python3-wstool build-essential python3-catkin-tools \
@@ -32,13 +31,13 @@ RUN rosdep init && \
     rosdep update --rosdistro $ROS_DISTRO
 
 RUN mkdir -p /home/catkin_ws/src && \
-
     cd /home/catkin_ws && \
     ls src && \
     /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; catkin build" && \
     echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /root/.bashrc && \
     echo "source /home/catkin_ws/devel/setup.bash" >> /root/.bashrc && \
     apt update && \
+    apt install python3-vcstool && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
     echo "succesfully"

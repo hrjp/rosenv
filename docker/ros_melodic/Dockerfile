@@ -18,9 +18,9 @@ RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main"
 
 RUN apt update && \
     apt install -y ros-$ROS_DISTRO-desktop-full ros-$ROS_DISTRO-rosserial ros-$ROS_DISTRO-rosserial-arduino python-rosdep python-catkin-tools && \
-    apt install python3-vcstool && \
-    echo "ros installed" && \
-    rosdep init && \
+    echo "ros installed" 
+
+RUN rosdep init && \
     rosdep update && \
     mkdir -p /home/catkin_ws/src && \
     cd /home/catkin_ws && \
@@ -29,6 +29,7 @@ RUN apt update && \
     echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /root/.bashrc && \
     echo "source /home/catkin_ws/devel/setup.bash" >> /root/.bashrc && \
     apt update && \
+    apt install python3-vcstool && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
     echo "succesfully"
