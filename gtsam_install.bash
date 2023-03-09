@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt update
-sudo apt-get install -y git curl wget
+sudo apt-get install -y git curl wget zip unzip
 
 if [ ! -d "/home/$USER" ]; then
     cd /home
