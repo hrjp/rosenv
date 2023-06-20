@@ -36,6 +36,7 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/ros:noetic_cudagl
             ghcr.io/${{ github.repository_owner }}/ros:noetic_cudagl
+            ghcr.io/${{ github.repository_owner }}/ros:latest
       - name: Build and Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
