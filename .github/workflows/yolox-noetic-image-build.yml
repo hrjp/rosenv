@@ -30,7 +30,7 @@ jobs:
           sudo rm -rf "/usr/local/lib/android" || true
           sudo rm -rf "/usr/local/share/boost" || true
           docker rmi $(docker image ls -q --filter "reference=node*")
-          docker rmi $(docker image ls -q --filter "reference=buildpack*")
+          docker rmi $(docker image ls -q --filter "reference=moby/buildkit*")
           docker rmi $(docker image ls -q --filter "reference=debian*")
           docker rmi $(docker image ls -q --filter "reference=alpine*")
           sudo apt purge \
