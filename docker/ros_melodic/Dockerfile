@@ -20,7 +20,7 @@ RUN apt update && \
     echo "ros installed" 
 
 RUN rosdep init && \
-    rosdep update && \
+    rosdep update --include-eol-distros && \
     mkdir -p /home/catkin_ws/src && \
     cd /home/catkin_ws && \
     ls src && \
