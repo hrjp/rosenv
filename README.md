@@ -56,9 +56,6 @@ git clone https://github.com/hrjp/rosenv
 # Ubuntu 20.04
 ./rosenv/docker/ubuntu20/run.bash
 
-# YOLO v5
-./rosenv/docker/yolo5/run.bash
-
 # YOLOX with ROS1 noetic
 ./rosenv/docker/ubuntu20/run.bash
 
@@ -73,6 +70,7 @@ git clone https://github.com/hrjp/rosenv
 | :--- | :--- | :--- |
 | -g | | GPUを使用する |
 | -r | | コンテナからexitした際にコンテナを自動消去する | 
+| -w | | --net-host をつけないで実行する(コンテナ外とネットワークを分離する) |
 | -n CONTAINER_NAME | | コンテナの名前 |
 | -s SHARE_FOLDER_PATH | | コンテナ内部と共有するディレクトリのパス<br>rosbagをやデータを外部と共有する際に使用<br>(ex.　shareフォルダを作ってから　/home/$USER/share ) |
 

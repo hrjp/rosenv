@@ -6,6 +6,7 @@ SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
 GPU_CMD=""
 CONTAINER_NAME_CMD="--name $CONTAINER_NAME"
+NETHOST_CMD="--net=host"
 
 usage_exit() {
         echo " " 1>&2
@@ -20,7 +21,7 @@ usage_exit() {
         exit 1
 }
 
-while getopts grn:s:h OPT
+while getopts grwn:s:h OPT
 do
     case $OPT in
         g )  GPU_CMD="--gpus all"
@@ -29,6 +30,9 @@ do
         r )  REMOVE_CMD="--rm"
             CONTAINER_NAME_CMD=""
             echo " Remove when exit this container" 1>&2
+            ;;
+        w )  NETHOST_CMD=""
+            echo " Not using --net=host" 1>&2
             ;;
         n)  CONTAINER_NAME=$OPTARG
             CONTAINER_NAME_CMD="--name $CONTAINER_NAME"
@@ -69,7 +73,6 @@ docker run -it  $CONTAINER_NAME_CMD\
             -e QT_X11_NO_MITSHM=1 \
             $GPU_CMD \
             $REMOVE_CMD \
-            --net=host \
+            $NETHOST_CMD \
             --privileged \
             $IMAGE_NAME /bin/bash
-
