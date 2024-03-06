@@ -27,6 +27,7 @@ do
             echo " Using nvidia GPUs" 1>&2
             ;;
         r )  REMOVE_CMD="--rm"
+            CONTAINER_NAME_CMD=""
             echo " Remove when exit this container" 1>&2
             ;;
         n)  CONTAINER_NAME=$OPTARG
