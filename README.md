@@ -8,9 +8,7 @@
 [![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-humble-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)   
 
 [![Ubuntu18.04 image build](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-18-image-build.yml/badge.svg)](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-18-image-build.yml)
-[![Ubuntu20.04 image build](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-20-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ubuntu)   
-
-[![YOLOX noetic image build](https://github.com/hrjp/rosenv/actions/workflows/yolox-noetic-image-build.yml/badge.svg)](https://hub.docker.comUbuntu20.04/repository/docker/hrjp/yolox)   
+[![Ubuntu20.04 image build](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-20-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ubuntu)    
 
 [![SLAM melodic image build](https://github.com/hrjp/rosenv/actions/workflows/slam-melodic-build.yml/badge.svg)](https://github.com/hrjp/rosenv/actions/workflows/slam-melodic-build.yml)   
 
@@ -54,9 +52,6 @@ git clone https://github.com/hrjp/rosenv
 ./rosenv/docker/naviton_melodic/run.bash
 
 # Ubuntu 20.04
-./rosenv/docker/ubuntu20/run.bash
-
-# YOLOX with ROS1 noetic
 ./rosenv/docker/ubuntu20/run.bash
 
 # LeGO-LOAM and hdl_graph_slam with ROS1 melodic
