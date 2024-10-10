@@ -36,6 +36,8 @@ RUN mkdir -p /home/catkin_ws/src && \
     /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; catkin build" && \
     echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /root/.bashrc && \
     echo "source /home/catkin_ws/devel/setup.bash" >> /root/.bashrc && \
+    echo "export __NV_PRIME_RENDER_OFFLOAD=1" >> /root/.bashrc && \
+    echo "export __GLX_VENDOR_LIBRARY_NAME=nvidia" >> /root/.bashrc && \
     apt update && \
     apt install -y python3-vcstool && \
     apt clean && \
