@@ -1,18 +1,4 @@
 #!/bin/bash
+sudo add-apt-repository -y ppa:borglab/gtsam-release-4.0
 sudo apt update
-sudo apt-get install -y git curl wget zip unzip
-
-if [ ! -d "/home/$USER" ]; then
-    cd /home
-else
-    cd /home/$USER
-fi
-
-mkdir gtsam
-cd gtsam
-wget -O gtsam.zip https://github.com/borglab/gtsam/archive/4.1.1.zip
-unzip gtsam.zip -d .
-cd gtsam-4.1.1/
-mkdir build && cd build
-cmake ..
-sudo make install
+sudo apt install -y libgtsam-dev libgtsam-unstable-dev
