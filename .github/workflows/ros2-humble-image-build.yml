@@ -36,7 +36,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./docker/ros2_humble
-          build-args: BASE_IMAGE=ubuntu:24.04
+          build-args: BASE_IMAGE=ubuntu:22.04
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/ros2:humble
