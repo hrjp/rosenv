@@ -50,5 +50,5 @@ jobs:
           build-args: BASE_IMAGE=cuda:${{ matrix.cuda_ver }}-cudnn-devel-ubuntu24.04
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/ros2:jazzy
-            ghcr.io/${{ github.repository_owner }}/ros2:jazzy
+            ${{ secrets.DOCKER_USERNAME }}/ros2:jazzy_cuda${{ matrix.cuda_ver }}
+            ghcr.io/${{ github.repository_owner }}/ros2:jazzy_cuda${{ matrix.cuda_ver }}
