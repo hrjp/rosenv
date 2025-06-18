@@ -49,6 +49,9 @@ git clone https://github.com/hrjp/rosenv
 # ROS2 humble
 ./rosenv/docker/ros2_humble/run.bash
 
+# ROS2 jazzy
+./rosenv/docker/ros2_jazzy/run.bash
+
 # naviton env
 ./rosenv/docker/naviton_melodic/run.bash
 
