@@ -5,7 +5,8 @@
 
 [![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-foxy-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)
 [![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-galactic-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)
-[![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-humble-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)   
+[![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-humble-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)
+[![ROS2 jazzy image build](https://github.com/hrjp/rosenv/actions/workflows/ros2-jazzy-image-build.yml/badge.svg)](https://github.com/hrjp/rosenv/actions/workflows/ros2-jazzy-image-build.yml)
 
 [![Ubuntu18.04 image build](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-18-image-build.yml/badge.svg)](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-18-image-build.yml)
 [![Ubuntu20.04 image build](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-20-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ubuntu)    
