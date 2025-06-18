@@ -1,7 +1,7 @@
 #!/bin/bash
 
-IMAGE_NAME=hrjp/ros:noetic
-CONTAINER_NAME=ros_noetic
+IMAGE_NAME=hrjp/ros2:jazzy
+CONTAINER_NAME=ros2_jazzy
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
 GPU_CMD=""
@@ -76,3 +76,4 @@ docker run -it  $CONTAINER_NAME_CMD\
             $NETHOST_CMD \
             --privileged \
             $IMAGE_NAME /bin/bash
+
