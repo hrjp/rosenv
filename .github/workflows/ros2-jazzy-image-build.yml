@@ -11,6 +11,10 @@ jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        cuda_ver: [nocuda, 12.6.3, 12.8.1, 12.9.1]
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -27,10 +31,23 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and Push to Docker Hub
+      - name: Build and Push to Docker Hub (nocuda)
+        if: matrix.cuda_ver == 'nocuda'
         uses: docker/build-push-action@v2
         with:
           context: ./docker/ros2_jazzy
+          build-args: BASE_IMAGE=ubuntu:24.04
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/ros2:jazzy
+            ghcr.io/${{ github.repository_owner }}/ros2:jazzy
+
+      - name: Build and Push to Docker Hub
+        if: matrix.cuda_ver != 'nocuda'
+        uses: docker/build-push-action@v2
+        with:
+          context: ./docker/ros2_jazzy
+          build-args: BASE_IMAGE=cuda:${{ matrix.cuda_ver }}-cudnn-devel-ubuntu24.04
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/ros2:jazzy

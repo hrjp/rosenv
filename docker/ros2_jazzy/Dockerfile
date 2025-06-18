@@ -1,8 +1,7 @@
 
 ARG ubuntu_ver=24.04
-
-#FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu$ubuntu_ver
-FROM ubuntu:$ubuntu_ver
+ARG BASE_IMAGE=ubuntu:$ubuntu_ver
+FROM $BASE_IMAGE
 
 ENV TURTLEBOT3_MODEL=waffle
 ENV DEBIAN_FRONTEND=noninteractive
