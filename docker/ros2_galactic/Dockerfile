@@ -4,7 +4,6 @@ ARG ubuntu_ver=20.04
 #FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu$ubuntu_ver
 FROM nvidia/cudagl:11.4.2-devel
 
-ENV TURTLEBOT3_MODEL=waffle
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN \
@@ -19,7 +18,7 @@ RUN \
 #RUN locale  ## check for UTF-8  https://hub.docker.com/r/nvidia/opengl
 RUN touch /etc/apt/apt.conf.d/99fixbadproxy && \
     echo "Acquire::http::Pipeline-Depth 0; Acquire::http::No-Cache true; Acquire::BrokenProxy true;" >> /etc/apt/apt.conf.d/99fixbadproxy && \
-	apt update && apt install locales && \
+	apt update && apt install -y locales && \
 	locale-gen en_US en_US.UTF-8  && \
 	update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 && \
 	export LANG=en_US.UTF-8

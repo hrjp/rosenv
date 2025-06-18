@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_NAME=hrjp/ros2:humble_cuda
+IMAGE_NAME=hrjp/ros2:humble
 CONTAINER_NAME=ros2_humble
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
@@ -17,11 +17,14 @@ usage_exit() {
         echo " -r                   | remove when exit the container" 1>&2
         echo " -n CONTAINER_NAME    | container name (default : $CONTAINER_NAME )" 1>&2
         echo " -s SHARE_FOLDER_PATH | directory path shared with the inside of the container" 1>&2
+        echo " -c CUDA_VERSION      | use CUDA version (default : none, options: 12.4.1, 12.5.1, 12.6.3, 12.8.1, 12.9.1)" 1>&2
+        echo " -w                   | not using --net=host" 1>&2
+        echo " -h                   | show this help message" 1>&2
         echo " -----------------------------------------------------------------------------" 1>&2
         exit 1
 }
 
-while getopts grwn:s:h OPT
+while getopts grwn:s:c:h OPT
 do
     case $OPT in
         g )  GPU_CMD="--gpus all"
@@ -41,6 +44,9 @@ do
         s )  SHARE_FOLDER_PATH=$OPTARG
             SHARE_FOLDER_CMD="-v $SHARE_FOLDER_PATH:/home/share"
             echo " SHARE_FOLDER_PATH = $SHARE_FOLDER_PATH " 1>&2
+            ;;
+        c )  IMAGE_NAME="${IMAGE_NAME}_cuda${OPTARG}"
+            echo " Using CUDA image: $IMAGE_NAME" 1>&2
             ;;
         h ) usage_exit
             ;;
