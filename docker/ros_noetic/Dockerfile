@@ -1,6 +1,6 @@
 # ROS Noetic enviroment
-
-ARG BASE_IMAGE=hrjp/ubuntu:20_cudagl
+ARG ubuntu_ver=20.04
+ARG BASE_IMAGE=ubuntu:$ubuntu_ver
 FROM $BASE_IMAGE
 
 ENV ROS_DISTRO=noetic
