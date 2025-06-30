@@ -10,11 +10,12 @@
 ![commit](https://img.shields.io/github/last-commit/hrjp/rosenv/main)
 
 # コマンド一行でROS環境構築！！
+# Set up a ROS environment with a single command!!
 以下のページで簡単にdocker runコマンドを生成できます
-https://hrjp.github.io/oneline_rosenv
 
-# rosenv
-ROS environment construction   
+--> https://hrjp.github.io/oneline_rosenv
+
+# 特長
 ROS1/ROS2向けのDocker Image
 * GPU,CUDA対応
 * Ethernet,USB接続のセンサー等も使用可能
