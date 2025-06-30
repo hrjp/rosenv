@@ -9,9 +9,6 @@
 ![size](https://img.shields.io/github/repo-size/hrjp/rosenv)
 ![commit](https://img.shields.io/github/last-commit/hrjp/rosenv/main)
 
-## old version
---> https://github.com/hrjp/rosenv/tree/v1.0
-
 # rosenv
 ROS environment construction   
 ROS1/ROS2向けのDocker Image
@@ -43,7 +40,6 @@ git clone https://github.com/hrjp/rosenv
 
 # ROS2 jazzy
 ./rosenv/docker/ros2_jazzy/run.bash
-
 ```
 
 ## container option
@@ -79,3 +75,6 @@ cd
 ./CONTAINER_NAME.bash
 ```
 次回からは上記のスクリプトを実行すると自動でコンテナをスタートしてコンテナ内に入れる
+
+## old version
+--> https://github.com/hrjp/rosenv/tree/v1.0
