@@ -1,6 +1,7 @@
 # ROS Melodic enviroment
 
-ARG BASE_IMAGE=hrjp/ubuntu:18_cudagl
+ARG ubuntu_ver=18.04
+ARG BASE_IMAGE=ubuntu:$ubuntu_ver
 FROM $BASE_IMAGE
 
 ENV ROS_DISTRO=melodic
