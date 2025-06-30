@@ -1,22 +1,7 @@
-#######################################################################################################################################################################################
-###  Install ROS2 on ubuntu ###
-#
-## build
-# $ docker build -t my/ros-gpu:foxy .
-#
-## docker build option: --build-arg ros1_ver=noetic and --build-arg ubuntu_ver=20.04
-# $ docker build -t my/ros-gpu:dashing --build-arg ros2_ver=dashing --build-arg ubuntu_ver=18.04 .
-#
-## run
-# $ docker run -it --name ROS_Foxy_GPU  -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -e QT_X11_NO_MITSHM=1 --gpus all my/ros-gpu:foxy /bin/bash
-#
-#######################################################################################################################################################################################
 
-
-
-ARG ubuntu_ver=20.04
-
-FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu$ubuntu_ver
+ARG ubuntu_ver=24.04
+ARG BASE_IMAGE=ubuntu:$ubuntu_ver
+FROM $BASE_IMAGE
 
 ENV DEBIAN_FRONTEND=noninteractive
 
