@@ -41,6 +41,8 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/ros2:jazzy
             ghcr.io/${{ github.repository_owner }}/ros2:jazzy
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Build and Push to Docker Hub
         if: matrix.cuda_ver != 'nocuda'
@@ -52,3 +54,5 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/ros2:jazzy_cuda${{ matrix.cuda_ver }}
             ghcr.io/${{ github.repository_owner }}/ros2:jazzy_cuda${{ matrix.cuda_ver }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
