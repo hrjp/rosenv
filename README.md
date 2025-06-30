@@ -1,21 +1,17 @@
-[![naviton workflow](https://github.com/hrjp/rosenv/actions/workflows/naviton-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/naviton)   
-
 [![ros workflow](https://github.com/hrjp/rosenv/actions/workflows/ros-melodic-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros)
-[![ROS noetic image build](https://github.com/hrjp/rosenv/actions/workflows/ros-noetic-image-build.yml/badge.svg?branch=main)](https://hub.docker.com/repository/docker/hrjp/ros)   
+[![ros workflow](https://github.com/hrjp/rosenv/actions/workflows/ros-noetic-image-build.yml/badge.svg?branch=main)](https://hub.docker.com/repository/docker/hrjp/ros)   
 
 [![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-foxy-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)
 [![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-galactic-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)
 [![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-humble-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)
 [![ROS2 jazzy image build](https://github.com/hrjp/rosenv/actions/workflows/ros2-jazzy-image-build.yml/badge.svg)](https://github.com/hrjp/rosenv/actions/workflows/ros2-jazzy-image-build.yml)
 
-[![Ubuntu18.04 image build](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-18-image-build.yml/badge.svg)](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-18-image-build.yml)
-[![Ubuntu20.04 image build](https://github.com/hrjp/rosenv/actions/workflows/ubuntu-20-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ubuntu)    
-
-[![SLAM melodic image build](https://github.com/hrjp/rosenv/actions/workflows/slam-melodic-build.yml/badge.svg)](https://github.com/hrjp/rosenv/actions/workflows/slam-melodic-build.yml)   
-
 ![license](https://img.shields.io/github/license/hrjp/rosenv)
 ![size](https://img.shields.io/github/repo-size/hrjp/rosenv)
 ![commit](https://img.shields.io/github/last-commit/hrjp/rosenv/main)
+
+## old version
+--> https://github.com/hrjp/rosenv/tree/v1.0
 
 # rosenv
 ROS environment construction   
@@ -43,23 +39,12 @@ git clone https://github.com/hrjp/rosenv
 # ROS2 foxy
 ./rosenv/docker/ros2_foxy/run.bash
 
-# ROS2 galactic
-./rosenv/docker/ros2_galactic/run.bash
-
 # ROS2 humble
 ./rosenv/docker/ros2_humble/run.bash
 
 # ROS2 jazzy
 ./rosenv/docker/ros2_jazzy/run.bash
 
-# naviton env
-./rosenv/docker/naviton_melodic/run.bash
-
-# Ubuntu 20.04
-./rosenv/docker/ubuntu20/run.bash
-
-# LeGO-LOAM and hdl_graph_slam with ROS1 melodic
-./rosenv/docker/slam_melodic/run.bash
 ```
 
 ## container option
@@ -72,17 +57,19 @@ git clone https://github.com/hrjp/rosenv
 | -w | | --net-host をつけないで実行する(コンテナ外とネットワークを分離する) |
 | -n CONTAINER_NAME | | コンテナの名前 |
 | -s SHARE_FOLDER_PATH | | コンテナ内部と共有するディレクトリのパス<br>rosbagをやデータを外部と共有する際に使用<br>(ex.　shareフォルダを作ってから　/home/$USER/share ) |
+| -c CUDA_VERSION | | CUDAバージョンを指定して使用する |
+| -h | | このヘルプメッセージを表示する |
 
 
 
-### Option無しで実行 (GPU無し　コンテナ名=naviton_melodic 共有フォルダ無し)
+### Option無しで実行 (GPU無し　コンテナ名=ros2_jazzy 共有フォルダ無し)
 ```bash
-./rosenv/docker/naviton_melodic/run.bash
+./rosenv/docker/ros2_jazzy/run.bash
 ```
 ### Optionの使用例 (GPU有り　コンテナ名=naviton　共有フォルダ=/home/$USER/share)
 
 ```bash:bash
-./rosenv/docker/naviton_melodic/run.bash -g -n naviton -s /home/$USER/share
+./rosenv/docker/ros2_jazzy/run.bash -g -n naviton -s /home/$USER/share
 ```
 
  ## コンテナ作成後
@@ -93,61 +80,3 @@ cd
 ./CONTAINER_NAME.bash
 ```
 次回からは上記のスクリプトを実行すると自動でコンテナをスタートしてコンテナ内に入れる
-
----
-
-# CI/CD Workflow
-### Github repositories
-* [rosenv](https://github.com/hrjp/rosenv)
-* [navtion](https://github.com/hrjp/navtion)
-
-### Dockerhub repositories
-
-* [hrjp/ros](https://hub.docker.com/repository/docker/hrjp/ros)
-* [hrjp/naviton](https://hub.docker.com/repository/docker/hrjp/naviton)
-
-
-```mermaid
-graph TD
-
-  subgraph GitHub
-    subgraph rosenv
-      docker/ros_melodic/Dockerfile
-      docker/naviton_melodic/Dockerfile
-    end
-    subgraph naviton 
-      docker/main/Dockerfile
-      docker/develop/Dockerfile
-    end
-  end
-  subgraph dockerhub
-    subgraph hrjp/ros
-      hrjp/ros:melodic_cudagl
-    end
-    subgraph hrjp/naviton
-      hrjp/naviton:melodic_cudagl
-      hrjp/naviton:melodic_main
-      hrjp/naviton:melodic_develop
-    end
-  end
-  
-  docker/ros_melodic/Dockerfile-->|Auto build and push at 11 P.M.|hrjp/ros:melodic_cudagl
-  hrjp/ros:melodic_cudagl-->docker/naviton_melodic/Dockerfile
-  docker/naviton_melodic/Dockerfile-->|Auto build and push at 1 A.M.|hrjp/naviton:melodic_cudagl
-  hrjp/naviton:melodic_cudagl-->docker/main/Dockerfile
-  hrjp/naviton:melodic_cudagl-->docker/develop/Dockerfile
-  docker/main/Dockerfile-->|Auto docker build and push at 3 A.M.|hrjp/naviton:melodic_main
-  docker/develop/Dockerfile-->|Auto docker build and push at 3 A.M.|hrjp/naviton:melodic_develop
-  
-  click docker/ros_melodic/Dockerfile https://github.com/hrjp/rosenv/blob/main/docker/ros_melodic/Dockerfile
-  click docker/naviton_melodic/Dockerfile https://github.com/hrjp/rosenv/blob/main/docker/naviton_melodic/Dockerfile
-  click docker/main/Dockerfile https://github.com/hrjp/naviton/blob/main/docker/main/Dockerfile
-  click docker/develop/Dockerfile https://github.com/hrjp/naviton/blob/main/docker/develop/Dockerfile
-  
-  click hrjp/ros:melodic_cudagl https://hub.docker.com/repository/docker/hrjp/ros
-  click hrjp/naviton:melodic_cudagl https://hub.docker.com/repository/docker/hrjp/naviton
-  click hrjp/naviton:melodic_main https://hub.docker.com/repository/docker/hrjp/naviton
-  click hrjp/naviton:melodic_develop https://hub.docker.com/repository/docker/hrjp/naviton
-  
-```
-
