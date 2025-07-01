@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ### ROS1 Install ###
 RUN apt-get update && \
     apt-get install -y curl gnupg && \
-    curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub | apt-key add - && \
+    curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub | gpg --dearmor -o /etc/apt/trusted.gpg.d/cuda-ubuntu1804.gpg && \
     touch /etc/apt/apt.conf.d/99fixbadproxy && \
     echo "Acquire::http::Pipeline-Depth 0; Acquire::http::No-Cache true; Acquire::BrokenProxy true;" >> /etc/apt/apt.conf.d/99fixbadproxy && \ 
     apt update && \
