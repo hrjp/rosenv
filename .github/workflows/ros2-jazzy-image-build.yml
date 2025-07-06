@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cuda_ver: [nocuda, 12.6.3, 12.8.1, 12.9.1]
+        cuda_ver: [nocuda, 12.6.0, 12.6.3, 12.8.0, 12.8.1, 12.9.0, 12.9.1]
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
