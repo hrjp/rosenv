@@ -38,7 +38,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     && rm -rf /var/lib/apt/lists/*
 RUN cd /home/catkin_ws && \
     ls src && \
-    /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; catkin build"
+    /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; catkin build" && \
+    test -f /home/catkin_ws/devel/setup.bash
 
 FROM runtime AS final
 COPY --from=builder /home/catkin_ws /home/catkin_ws
