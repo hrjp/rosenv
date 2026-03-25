@@ -36,9 +36,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-wstool \
     python3-catkin-tools \
     && rm -rf /var/lib/apt/lists/*
-RUN cd /home/catkin_ws && \
-    /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; catkin build" && \
-    test -f /home/catkin_ws/devel/setup.bash || (echo "Error: catkin build failed - /home/catkin_ws/devel/setup.bash not found" && exit 1)
+RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; cd /home/catkin_ws; catkin build" && \
+    if [ ! -f /home/catkin_ws/devel/setup.bash ]; then echo "Error: catkin build failed - /home/catkin_ws/devel/setup.bash not found"; exit 1; fi
 
 FROM runtime AS final
 COPY --from=builder /home/catkin_ws /home/catkin_ws
