@@ -36,8 +36,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-wstool \
     python3-catkin-tools \
     && rm -rf /var/lib/apt/lists/*
-RUN mkdir -p /home/catkin_ws/src && \
-    cd /home/catkin_ws && \
+RUN cd /home/catkin_ws && \
     ls src && \
     /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; catkin build"
 
@@ -48,5 +47,5 @@ RUN \
     echo "source /home/catkin_ws/devel/setup.bash" >> /root/.bashrc && \
     echo "export __NV_PRIME_RENDER_OFFLOAD=1" >> /root/.bashrc && \
     echo "export __GLX_VENDOR_LIBRARY_NAME=nvidia" >> /root/.bashrc && \
-    echo "successfully"
+    echo "ROS Noetic environment setup complete"
 WORKDIR /home/catkin_ws
