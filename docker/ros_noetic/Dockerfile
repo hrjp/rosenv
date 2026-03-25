@@ -1,7 +1,7 @@
 # ROS Noetic enviroment
 ARG ubuntu_ver=20.04
 ARG BASE_IMAGE=ubuntu:$ubuntu_ver
-FROM $BASE_IMAGE
+FROM $BASE_IMAGE AS builder
 
 ENV ROS_DISTRO=noetic
 ENV DEBIAN_FRONTEND=noninteractive
@@ -44,4 +44,5 @@ RUN mkdir -p /home/catkin_ws/src && \
     rm -rf /var/lib/apt/lists/* && \
     echo "succesfully"
 
+FROM builder AS final
 WORKDIR /home/catkin_ws

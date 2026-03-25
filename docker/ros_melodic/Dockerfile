@@ -2,7 +2,7 @@
 
 ARG ubuntu_ver=18.04
 ARG BASE_IMAGE=ubuntu:$ubuntu_ver
-FROM $BASE_IMAGE
+FROM $BASE_IMAGE AS builder
 
 ENV ROS_DISTRO=melodic
 ENV DEBIAN_FRONTEND=noninteractive
@@ -37,4 +37,5 @@ RUN rosdep init && \
     rm -rf /var/lib/apt/lists/* && \
     echo "succesfully"
 
+FROM builder AS final
 WORKDIR /home/catkin_ws

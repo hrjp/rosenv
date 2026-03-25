@@ -36,6 +36,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./docker/ros_melodic
+          target: final
           build-args: BASE_IMAGE=nvidia/cudagl:${{ matrix.cuda_ver }}-devel-ubuntu18.04
           push: true
           tags: |
@@ -48,6 +49,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./docker/ros_melodic
+          target: final
           build-args: BASE_IMAGE=ubuntu:18.04
           push: true
           tags: |
