@@ -1,4 +1,4 @@
-# ROS Noetic enviroment
+# ROS Noetic environment
 ARG ubuntu_ver=20.04
 ARG BASE_IMAGE=ubuntu:$ubuntu_ver
 FROM $BASE_IMAGE AS builder
@@ -42,7 +42,7 @@ RUN mkdir -p /home/catkin_ws/src && \
     apt install -y python3-vcstool && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
-    echo "succesfully"
+    echo "successfully"
 
 FROM builder AS final
 WORKDIR /home/catkin_ws

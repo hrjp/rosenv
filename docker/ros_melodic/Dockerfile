@@ -35,7 +35,7 @@ RUN rosdep init && \
     apt install -y python3-vcstool && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
-    echo "succesfully"
+    echo "successfully"
 
 FROM builder AS final
 WORKDIR /home/catkin_ws
