@@ -38,7 +38,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     && rm -rf /var/lib/apt/lists/*
 RUN cd /home/catkin_ws && \
     /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; catkin build" && \
-    test -f /home/catkin_ws/devel/setup.bash || (echo "Error: catkin build failed - setup.bash not found" && exit 1)
+    test -f /home/catkin_ws/devel/setup.bash || (echo "Error: catkin build failed - /home/catkin_ws/devel/setup.bash not found" && exit 1)
 
 FROM runtime AS final
 COPY --from=builder /home/catkin_ws /home/catkin_ws
