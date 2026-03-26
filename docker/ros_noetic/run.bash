@@ -5,6 +5,7 @@ CONTAINER_NAME=ros_noetic
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
 GPU_CMD=""
+REMOVE_CMD=""
 CONTAINER_NAME_CMD="--name $CONTAINER_NAME"
 NETHOST_CMD="--net=host"
 USER_CMD=""
@@ -68,12 +69,12 @@ done
 
 
 
-if [ -z $REMOVE_CMD ]; then
+if [ -z "${REMOVE_CMD:-}" ]; then
     cd
-    if [ ! -f $CONTAINER_NAME.bash ]; then
-        touch $CONTAINER_NAME.bash
-        sudo chmod 777 $CONTAINER_NAME.bash
-        echo -e "xhost + \n docker start $CONTAINER_NAME \n docker exec -it ${EXEC_USER_CMD:+$EXEC_USER_CMD }$CONTAINER_NAME /bin/bash" >>$CONTAINER_NAME.bash
+    if [ ! -f "$CONTAINER_NAME.bash" ]; then
+        touch "$CONTAINER_NAME.bash"
+        sudo chmod 777 "$CONTAINER_NAME.bash"
+        echo -e "xhost + \n docker start $CONTAINER_NAME \n docker exec -it ${EXEC_USER_CMD:+$EXEC_USER_CMD }$CONTAINER_NAME /bin/bash" >>"$CONTAINER_NAME.bash"
     fi
 else
     CONTAINER_NAME=""
