@@ -1,7 +1,7 @@
-# ROS Noetic enviroment
+# ROS Noetic environment
 ARG ubuntu_ver=20.04
 ARG BASE_IMAGE=ubuntu:$ubuntu_ver
-FROM $BASE_IMAGE
+FROM $BASE_IMAGE AS runtime
 
 ENV ROS_DISTRO=noetic
 ENV DEBIAN_FRONTEND=noninteractive
@@ -18,30 +18,33 @@ RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main"
 
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    build-essential \
     python3-rosdep \
     python3-rosinstall \
     python3-vcstools \
     ros-$ROS_DISTRO-desktop-full \
     ros-$ROS_DISTRO-rosserial ros-$ROS_DISTRO-rosserial-arduino \
-    python3-rosinstall-generator python3-wstool build-essential python3-catkin-tools \
     && rm -rf /var/lib/apt/lists/*
 
 RUN rosdep init && \
-    rosdep update --rosdistro $ROS_DISTRO
+    rosdep update --rosdistro $ROS_DISTRO && \
+    mkdir -p /home/catkin_ws/src
 
-RUN mkdir -p /home/catkin_ws/src && \
-    cd /home/catkin_ws && \
-    ls src && \
-    /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; catkin build" && \
+FROM runtime AS builder
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    build-essential \
+    python3-rosinstall-generator \
+    python3-wstool \
+    python3-catkin-tools \
+    && rm -rf /var/lib/apt/lists/*
+RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash; cd /home/catkin_ws; catkin build"
+RUN if [ ! -f /home/catkin_ws/devel/setup.bash ]; then echo "Error: catkin build failed - /home/catkin_ws/devel/setup.bash not found"; exit 1; fi
+
+FROM runtime AS final
+COPY --from=builder /home/catkin_ws /home/catkin_ws
+RUN \
     echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /root/.bashrc && \
     echo "source /home/catkin_ws/devel/setup.bash" >> /root/.bashrc && \
     echo "export __NV_PRIME_RENDER_OFFLOAD=1" >> /root/.bashrc && \
     echo "export __GLX_VENDOR_LIBRARY_NAME=nvidia" >> /root/.bashrc && \
-    apt update && \
-    apt install -y python3-vcstool && \
-    apt clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    echo "succesfully"
-
+    echo "ROS Noetic environment setup complete"
 WORKDIR /home/catkin_ws

@@ -1,7 +1,7 @@
 
 ARG ubuntu_ver=24.04
 ARG BASE_IMAGE=ubuntu:$ubuntu_ver
-FROM $BASE_IMAGE
+FROM $BASE_IMAGE AS builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -36,6 +36,7 @@ RUN apt install -y ros-$ROS_DISTRO-desktop-full ros-$ROS_DISTRO-turtlesim ros-$R
 	apt update && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
-    echo "succesfully"
+    echo "successfully"
 	
+FROM builder AS final
 WORKDIR /home/colcon_ws

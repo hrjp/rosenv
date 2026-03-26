@@ -36,6 +36,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./docker/ros2_foxy
+          target: final
           build-args: BASE_IMAGE=nvidia/cuda:${{ matrix.cuda_ver }}-cudnn-devel-ubuntu20.04
           push: true
           tags: |
@@ -48,6 +49,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./docker/ros2_foxy
+          target: final
           build-args: BASE_IMAGE=ubuntu:20.04
           push: true
           tags: |
