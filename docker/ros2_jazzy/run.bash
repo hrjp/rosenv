@@ -74,7 +74,7 @@ if [ -z "${REMOVE_CMD:-}" ]; then
     if [ ! -f "$CONTAINER_NAME.bash" ]; then
         touch "$CONTAINER_NAME.bash"
         sudo chmod 755 "$CONTAINER_NAME.bash"
-        echo -e "xhost + \n docker start $CONTAINER_NAME \n docker exec -it ${EXEC_USER_CMD:+$EXEC_USER_CMD }$CONTAINER_NAME /bin/bash" >>"$CONTAINER_NAME.bash"
+        echo -e "xhost + \n docker start \"$CONTAINER_NAME\" \n docker exec -it ${EXEC_USER_CMD:+$EXEC_USER_CMD }\"$CONTAINER_NAME\" /bin/bash" >>"$CONTAINER_NAME.bash"
     fi
 else
     CONTAINER_NAME=""
