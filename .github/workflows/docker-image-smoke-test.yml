@@ -43,7 +43,7 @@ jobs:
               echo "base_image=ubuntu:20.04" >> "$GITHUB_OUTPUT"
               echo "workspace=/home/catkin_ws" >> "$GITHUB_OUTPUT"
               echo "source_setup=source /opt/ros/noetic/setup.bash && source /home/catkin_ws/devel/setup.bash" >> "$GITHUB_OUTPUT"
-              echo "build_cmd=cd /home/catkin_ws && catkin build --no-status" >> "$GITHUB_OUTPUT"
+              echo "build_cmd=cd /home/catkin_ws && catkin_make" >> "$GITHUB_OUTPUT"
               echo "sample_cmd=rosrun turtlesim turtlesim_node" >> "$GITHUB_OUTPUT"
               ;;
             ros2_foxy)
@@ -86,7 +86,7 @@ jobs:
         run: |
           set -euo pipefail
           docker run --rm --entrypoint /bin/bash "rosenv-smoke:${{ matrix.image }}" -lc \
-            "set -euo pipefail; ${{ steps.config.outputs.source_setup }}; ${{ steps.config.outputs.build_cmd }}"
+            "set -eo pipefail; ${{ steps.config.outputs.source_setup }}; ${{ steps.config.outputs.build_cmd }}"
 
       - name: Verify GUI sample package (Xvfb)
         run: |
@@ -113,7 +113,7 @@ jobs:
             -e LIBGL_ALWAYS_SOFTWARE=1 \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             --entrypoint /bin/bash "rosenv-smoke:${{ matrix.image }}" -lc \
-            "set -euo pipefail; ${{ steps.config.outputs.source_setup }}; status=0; timeout 20s ${{ steps.config.outputs.sample_cmd }} || status=\$?; if [ \"\$status\" -eq 124 ]; then exit 0; fi; exit \"\$status\"" || status=$?
+            "set -eo pipefail; ${{ steps.config.outputs.source_setup }}; status=0; timeout 20s ${{ steps.config.outputs.sample_cmd }} || status=\$?; if [ \"\$status\" -eq 124 ]; then exit 0; fi; exit \"\$status\"" || status=$?
 
           if [ "$status" -ne 0 ]; then
             echo "GUI smoke test failed with status $status" >&2
