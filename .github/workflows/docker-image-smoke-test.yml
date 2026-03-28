@@ -80,7 +80,7 @@ jobs:
             --target final \
             --build-arg BASE_IMAGE="${{ steps.config.outputs.base_image }}" \
             --tag "rosenv-smoke:${{ matrix.image }}" \
-            "/home/runner/work/rosenv/rosenv/docker/${{ matrix.image }}"
+            "./docker/${{ matrix.image }}"
 
       - name: Verify ROS workspace build in container
         run: |
@@ -105,15 +105,17 @@ jobs:
           fi
 
           status=0
+          # turtlesim runs continuously, so inner timeout(20s)=success for this smoke test.
+          # Outer timeout(60s) remains a hard failure to catch docker run hangs.
           timeout 60s docker run --rm \
             -e DISPLAY=:99 \
             -e QT_X11_NO_MITSHM=1 \
             -e LIBGL_ALWAYS_SOFTWARE=1 \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             --entrypoint /bin/bash "rosenv-smoke:${{ matrix.image }}" -lc \
-            "set -euo pipefail; ${{ steps.config.outputs.source_setup }}; timeout 20s ${{ steps.config.outputs.sample_cmd }}" || status=$?
+            "set -euo pipefail; ${{ steps.config.outputs.source_setup }}; status=0; timeout 20s ${{ steps.config.outputs.sample_cmd }} || status=\$?; if [ \"\$status\" -eq 124 ]; then exit 0; fi; exit \"\$status\"" || status=$?
 
-          if [ "$status" -ne 0 ] && [ "$status" -ne 124 ]; then
+          if [ "$status" -ne 0 ]; then
             echo "GUI smoke test failed with status $status" >&2
             exit "$status"
           fi
