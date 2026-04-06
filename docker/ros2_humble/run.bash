@@ -9,6 +9,8 @@ REMOVE_CMD=""
 CONTAINER_NAME_CMD="--name $CONTAINER_NAME"
 NETHOST_CMD="--net=host"
 USER_CMD=""
+USER_MAP_CMD=""
+GROUP_ADD_CMD=""
 EXEC_USER_CMD=""
 XAUTHORITY_PATH="/root/.Xauthority"
 XAUTHORITY_ENV_CMD=""
@@ -44,6 +46,8 @@ do
             echo " Not using --net=host" 1>&2
             ;;
         u )  USER_CMD="--user $(id -u):$(id -g)"
+            USER_MAP_CMD="-v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro -v /etc/shadow:/etc/shadow:ro"
+            GROUP_ADD_CMD="$(id -G | sed 's/[[:space:]]\+/ --group-add /g; s/^/--group-add /')"
             EXEC_USER_CMD="--user $(id -u):$(id -g)"
             XAUTHORITY_PATH="/tmp/.Xauthority"
             XAUTHORITY_ENV_CMD="-e XAUTHORITY=/tmp/.Xauthority"
@@ -91,6 +95,8 @@ docker run -it  $CONTAINER_NAME_CMD\
             -e QT_X11_NO_MITSHM=1 \
             $XAUTHORITY_ENV_CMD \
             $USER_CMD \
+            $USER_MAP_CMD \
+            $GROUP_ADD_CMD \
             $GPU_CMD \
             $REMOVE_CMD \
             $NETHOST_CMD \
