@@ -43,6 +43,8 @@ RUN if [ ! -f /home/catkin_ws/devel/setup.bash ]; then echo "Error: catkin build
 FROM runtime AS final
 COPY --from=builder /home/catkin_ws /home/catkin_ws
 RUN \
+    chgrp -R users /home/catkin_ws && \
+    chmod -R g+rwX /home/catkin_ws && \
     echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /root/.bashrc && \
     echo "source /home/catkin_ws/devel/setup.bash" >> /root/.bashrc && \
     echo "export __NV_PRIME_RENDER_OFFLOAD=1" >> /root/.bashrc && \
