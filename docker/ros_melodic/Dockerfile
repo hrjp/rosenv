@@ -38,4 +38,6 @@ RUN rosdep init && \
     echo "successfully"
 
 FROM builder AS final
+RUN chgrp -R users /home/catkin_ws && \
+    chmod -R g+rwX /home/catkin_ws
 WORKDIR /home/catkin_ws

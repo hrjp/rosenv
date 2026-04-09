@@ -55,6 +55,7 @@ git clone https://github.com/hrjp/rosenv
 | -g | | GPUを使用する |
 | -r | | コンテナからexitした際にコンテナを自動消去する | 
 | -w | | --net-host をつけないで実行する(コンテナ外とネットワークを分離する) |
+| -u | | root ではなく実行ユーザ権限で docker run する |
 | -n CONTAINER_NAME | | コンテナの名前 |
 | -s SHARE_FOLDER_PATH | | コンテナ内部と共有するディレクトリのパス<br>rosbagをやデータを外部と共有する際に使用<br>(ex.　shareフォルダを作ってから　/home/$USER/share ) |
 | -c CUDA_VERSION | | CUDAバージョンを指定して使用する |

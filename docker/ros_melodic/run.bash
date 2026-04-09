@@ -5,8 +5,16 @@ CONTAINER_NAME=ros_melodic
 SHARE_FOLDER_PATH=""
 SHARE_FOLDER_CMD=""
 GPU_CMD=""
+REMOVE_CMD=""
 CONTAINER_NAME_CMD="--name $CONTAINER_NAME"
 NETHOST_CMD="--net=host"
+USER_CMD=""
+USER_MAP_CMD=""
+GROUP_ADD_CMD=""
+EXEC_USER_CMD=""
+XAUTHORITY_PATH="/root/.Xauthority"
+XAUTHORITY_ENV_CMD=""
+USER_ENV_CMD=""
 
 usage_exit() {
         echo " " 1>&2
@@ -19,12 +27,13 @@ usage_exit() {
         echo " -s SHARE_FOLDER_PATH | directory path shared with the inside of the container" 1>&2
         echo " -c CUDA_VERSION      | use CUDA version (default : none, options: 12.4.1, 12.5.1, 12.6.3, 12.8.1, 12.9.1)" 1>&2
         echo " -w                   | not using --net=host" 1>&2
+        echo " -u                   | run as current user instead of root" 1>&2
         echo " -h                   | show this help message" 1>&2
         echo " -----------------------------------------------------------------------------" 1>&2
         exit 1
 }
 
-while getopts grwn:s:c:h OPT
+while getopts gruwn:s:c:h OPT
 do
     case $OPT in
         g )  GPU_CMD="--gpus all"
@@ -36,6 +45,15 @@ do
             ;;
         w )  NETHOST_CMD=""
             echo " Not using --net=host" 1>&2
+            ;;
+        u )  USER_CMD="--user $(id -u):$(id -g)"
+            USER_MAP_CMD="-v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro -v /etc/shadow:/etc/shadow:ro"
+            GROUP_ADD_CMD="$(id -G | sed 's/[[:space:]]\+/ --group-add /g; s/^/--group-add /')"
+            USER_ENV_CMD="-e HOME=/home/catkin_ws -e XDG_CONFIG_HOME=/home/catkin_ws/.config"
+            EXEC_USER_CMD="--user $(id -u):$(id -g)"
+            XAUTHORITY_PATH="/tmp/.Xauthority"
+            XAUTHORITY_ENV_CMD="-e XAUTHORITY=/tmp/.Xauthority"
+            echo " Running as current user" 1>&2
             ;;
         n)  CONTAINER_NAME=$OPTARG
             CONTAINER_NAME_CMD="--name $CONTAINER_NAME"
@@ -57,12 +75,12 @@ done
 
 
 
-if [ -z $REMOVE_CMD ]; then
+if [ -z "${REMOVE_CMD:-}" ]; then
     cd
-    if [ ! -f $CONTAINER_NAME.bash ]; then
-        touch $CONTAINER_NAME.bash
-        sudo chmod 777 $CONTAINER_NAME.bash
-        echo -e "xhost + \n docker start $CONTAINER_NAME \n docker exec -it $CONTAINER_NAME /bin/bash" >>$CONTAINER_NAME.bash
+    if [ ! -f "$CONTAINER_NAME.bash" ]; then
+        touch "$CONTAINER_NAME.bash"
+        sudo chmod 755 "$CONTAINER_NAME.bash"
+        echo -e "xhost + \n docker start \"$CONTAINER_NAME\" \n docker exec -it ${EXEC_USER_CMD:+$EXEC_USER_CMD }\"$CONTAINER_NAME\" /bin/bash" >>"$CONTAINER_NAME.bash"
     fi
 else
     CONTAINER_NAME=""
@@ -73,10 +91,15 @@ xhost +
 docker run -it  $CONTAINER_NAME_CMD\
             -v /dev:/dev \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
-            -v $HOME/.Xauthority:/root/.Xauthority:rw \
+            -v $HOME/.Xauthority:$XAUTHORITY_PATH:rw \
             $SHARE_FOLDER_CMD \
             -e DISPLAY=$DISPLAY \
             -e QT_X11_NO_MITSHM=1 \
+            $XAUTHORITY_ENV_CMD \
+            $USER_ENV_CMD \
+            $USER_CMD \
+            $USER_MAP_CMD \
+            $GROUP_ADD_CMD \
             $GPU_CMD \
             $REMOVE_CMD \
             $NETHOST_CMD \
