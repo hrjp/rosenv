@@ -41,6 +41,8 @@ RUN apt install -y ros-$ROS_DISTRO-desktop ros-$ROS_DISTRO-turtlesim ros-$ROS_DI
     echo "successfully"
 	
 FROM builder AS final
+RUN chgrp -R users /home/colcon_ws && \
+	chmod -R g+rwX /home/colcon_ws
 WORKDIR /home/colcon_ws
 
 

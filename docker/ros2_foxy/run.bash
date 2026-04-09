@@ -14,6 +14,7 @@ GROUP_ADD_CMD=""
 EXEC_USER_CMD=""
 XAUTHORITY_PATH="/root/.Xauthority"
 XAUTHORITY_ENV_CMD=""
+USER_ENV_CMD=""
 
 usage_exit() {
         echo " " 1>&2
@@ -48,6 +49,7 @@ do
         u )  USER_CMD="--user $(id -u):$(id -g)"
             USER_MAP_CMD="-v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro -v /etc/shadow:/etc/shadow:ro"
             GROUP_ADD_CMD="$(id -G | sed 's/[[:space:]]\+/ --group-add /g; s/^/--group-add /')"
+            USER_ENV_CMD="-e HOME=/home/colcon_ws -e XDG_CONFIG_HOME=/home/colcon_ws/.config"
             EXEC_USER_CMD="--user $(id -u):$(id -g)"
             XAUTHORITY_PATH="/tmp/.Xauthority"
             XAUTHORITY_ENV_CMD="-e XAUTHORITY=/tmp/.Xauthority"
@@ -94,6 +96,7 @@ docker run -it  $CONTAINER_NAME_CMD\
             -e DISPLAY=$DISPLAY \
             -e QT_X11_NO_MITSHM=1 \
             $XAUTHORITY_ENV_CMD \
+            $USER_ENV_CMD \
             $USER_CMD \
             $USER_MAP_CMD \
             $GROUP_ADD_CMD \
