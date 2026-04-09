@@ -5,6 +5,8 @@
 [![ros2 workflow](https://github.com/hrjp/rosenv/actions/workflows/ros2-humble-image-build.yml/badge.svg)](https://hub.docker.com/repository/docker/hrjp/ros2)
 [![ROS2 jazzy image build](https://github.com/hrjp/rosenv/actions/workflows/ros2-jazzy-image-build.yml/badge.svg)](https://github.com/hrjp/rosenv/actions/workflows/ros2-jazzy-image-build.yml)
 
+[![Docker image smoke test](https://github.com/hrjp/rosenv/actions/workflows/docker-image-smoke-test.yml/badge.svg?branch=main)](https://github.com/hrjp/rosenv/actions/workflows/docker-image-smoke-test.yml)
+
 ![license](https://img.shields.io/github/license/hrjp/rosenv)
 ![size](https://img.shields.io/github/repo-size/hrjp/rosenv)
 ![commit](https://img.shields.io/github/last-commit/hrjp/rosenv/main)

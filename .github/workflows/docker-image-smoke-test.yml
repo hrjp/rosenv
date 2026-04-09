@@ -1,6 +1,8 @@
 name: Docker image smoke test
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '55 15 * * *'
   pull_request:
   push:
     branches:
